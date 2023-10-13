@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Title and JavaScript files -->
   <title>Books Library</title>
-  <script src="script.js"></script> <!-- Load this first -->
-  <script src="main.js"></script> <!-- Load this second -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Books Library</h1>
@@ -31,17 +29,24 @@
       <button id="sort-oldest">Sort by Oldest</button>
     </div>
 
-    <ul id="book-list-ul"></ul> <!-- Placeholder for the book list -->
+    <div class="card-container" id="book-list-ul">
+      <!-- Book cards will be dynamically added here -->
+    </div>
   </div>
 
   <div id="book-details">
     <h2>Book Details</h2>
-    <p>ID: <span id="book-id"></span></p>
-    <p>Title: <span id="book-title"></span></p>
-    <p>Author: <span id="book-author"></span></p>
-    <p>Publication Year: <span id="book-year"></span></p>
-    <img id="book-image" src="" alt="Book Cover"> <!-- Placeholder for book image -->
+    <p><strong>Title:</strong> <span id="book-title"></span></p>
+    <p><strong>Author:</strong> <span id="book-author"></span></p>
+    <p><strong>Year:</strong> <span id="book-year"></span></p>
+    <p><strong>Genre:</strong> <span id="book-genre"></span></p>
+    <p><strong>Rating:</strong> <span id="book-rating"></span></p>
+    <p><strong>Description:</strong> <span id="book-description"></span></p>
+    <img id="book-image" src="" alt="Book Cover">
   </div>
+
+  <script src="main.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
