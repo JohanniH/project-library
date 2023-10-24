@@ -19,39 +19,56 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-// Function to create a book card
-function createBookCard(book, index) {
-  const card = document.createElement("div");
-  card.className = "card";
+  // Function to create a book card
+  function createBookCard(book, index) {
+    const card = document.createElement("div");
+    card.className = "card";
 
-  const image = document.createElement("img");
-  image.src = book.image;
-  image.alt = book.title;
+    const image = document.createElement("img");
+    image.src = book.image;
+    image.alt = book.title;
 
-  const title = document.createElement("h3");
-  title.textContent = book.title;
+    const title = document.createElement("h3");
+    title.textContent = book.title;
 
-  const author = document.createElement("p");
-  author.textContent = `Author: ${book.author}`;
+    const author = document.createElement("p");
+    author.textContent = `Author: ${book.author}`;
 
-  const year = document.createElement("p");
-  year.textContent = `Year: ${book.year}`;
+    const year = document.createElement("p");
+    year.textContent = `Year: ${book.year}`;
 
-  card.appendChild(image);
-  card.appendChild(title);
-  card.appendChild(author);
-  card.appendChild(year);
+    const genre = document.createElement("p");
+    genre.textContent = `Genre: ${book.genre}`;
 
-  card.addEventListener("click", function () {
-    displayBookDetails(book);
-  });
+    const rating = document.createElement("p");
+    rating.textContent = `Rating: ${book.rating}`;
 
-  return card;
-}
+    const description = document.createElement("p");
+    description.textContent = `Description: ${book.description}`;
+
+    card.appendChild(image);
+    card.appendChild(title);
+    card.appendChild(author);
+    card.appendChild(year);
+    card.appendChild(genre);
+    card.appendChild(rating);
+
+    // Add a line break before the description
+    const br = document.createElement("br");
+    card.appendChild(br);
+
+    card.appendChild(description);
+
+    card.addEventListener("click", function () {
+      displayBookDetails(book);
+    });
+
+    return card;
+  }
 
   // Function to display book details
   function displayBookDetails(book) {
-    bookDetails.title.textContent = book.title;
+    bookDetails.title.textContent = `Title: ${book.title}`;
     bookDetails.author.textContent = `Author: ${book.author}`;
     bookDetails.year.textContent = `Year: ${book.year}`;
     bookDetails.genre.textContent = `Genre: ${book.genre}`;
@@ -70,7 +87,10 @@ function createBookCard(book, index) {
   // Add an event listener to the genre filter dropdown
   genreFilter.addEventListener("change", function () {
     const selectedGenre = genreFilter.value;
-    const filteredBooks = selectedGenre === "all" ? books : books.filter(book => book.genre === selectedGenre);
+    const filteredBooks =
+      selectedGenre === "all"
+        ? books
+        : books.filter((book) => book.genre === selectedGenre);
     displayBookCards(filteredBooks);
   });
 
@@ -91,7 +111,9 @@ function createBookCard(book, index) {
   function sortBooksByYear(newestFirst) {
     const sortedBooks = [...books];
 
-    sortedBooks.sort((a, b) => (newestFirst ? b.year - a.year : a.year - b.year));
+    sortedBooks.sort((a, b) =>
+      newestFirst ? b.year - a.year : a.year - b.year
+    );
 
     displayBookCards(sortedBooks);
   }
